@@ -11,7 +11,7 @@ right below the opening `<body>` tag; and before the closing tag `</body>` (#148
   (@ijlyttle, #1452).
 * Make sidebar specification more flexible: users can now
     * change the order of sidebar elements
-    * add custom sidebar sections (title, text that has to be HTML)
+    * add custom sidebar sections (title, text that has to be Markdown or HTML)
     * completely suppress the navbar (even "Dev status")
     * provide their own HTML for the navbar. (#1443, #1488)
 

@@ -50,7 +50,28 @@ test_that("data_home_sidebar() can get a custom component", {
     components = list(
       fancy = list(
         title = "Fancy section",
-        html = "How cool is pkgdown?!"
+        text = "How cool is pkgdown?!"
+      )
+    )
+  )
+
+  result <- xml2::read_html(
+    data_home_sidebar(pkg)
+  )
+
+  expect_snapshot(
+    xml2::xml_find_first(result, ".//div[@class='fancy-section']")
+  )
+
+  pkg$meta$home$sidebar <- list(
+    structure = c("fancy"),
+    components = list(
+      fancy = list(
+        title = "Fancy section",
+        text = c(
+          "How cool is [pkgdown](https://github.com)?!",
+          "<a href='https://github.com'>Repo</a>"
+          )
       )
     )
   )
@@ -84,7 +105,7 @@ test_that("data_home_sidebar() outputs informative error messages", {
   # no title
   pkg$meta$home$sidebar <- list(
     structure = c("fancy"),
-    components = list(fancy = list(html = "bla"))
+    components = list(fancy = list(text = "bla"))
   )
   expect_snapshot_error(data_home_sidebar(pkg))
 
@@ -92,7 +113,7 @@ test_that("data_home_sidebar() outputs informative error messages", {
 
   pkg$meta$home$sidebar <- list(
     structure = c("fancy"),
-    components = list(fancy = list(text = "bla"))
+    components = list(fancy = list(blop = "bla"))
   )
   expect_snapshot_error(data_home_sidebar(pkg))
 })
