@@ -306,26 +306,35 @@ check_made_by <- function(first) {
 }
 
 data_deps <- function(pkg, path) {
-  # dependencies for head
+
+  # theme variables from configuration
   bs_version <- get_bs_version(pkg)
   bootswatch_theme <- pkg$meta[["template"]]$bootswatch %||% NULL
   bs_theme <- do.call(
     bslib::bs_theme,
-    c(list(version = bs_version,
-    bootswatch = bootswatch_theme), pkg$meta[["template"]]$bslib)
+    c(
+      list(
+        version = bs_version,
+        bootswatch = bootswatch_theme
+        ),
+      pkg$meta[["template"]]$bslib
+    )
   )
   deps <- bslib::bs_theme_dependencies(bs_theme)
-  # Add other dependencies
+  # Add other dependencies - TODO: more of those?
   deps <- c(
     deps,
     list(rmarkdown::html_dependency_font_awesome())
   )
+
+  # Dependencies files end up at the website root in a deps folder
   deps <- lapply(
     deps,
     htmltools::copyDependencyToDir,
     file.path(pkg$dst_path, "deps")
-    )
+  )
 
+  # Function needed for indicating where that deps folder is compared to here
   transform_path <- function(x) {
 
     x <- gsub(pkg$dst_path, "", x)
@@ -342,8 +351,10 @@ data_deps <- function(pkg, path) {
 
   }
 
+  # Tags ready to be added in heads
   htmltools::renderDependencies(
-    deps, srcType = "file",
+    deps,
+    srcType = "file",
     hrefFilter = transform_path
   )
 }
