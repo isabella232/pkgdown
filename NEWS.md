@@ -1,5 +1,7 @@
 # pkgdown (development version)
 
+* pkgdown now support Bootstrap 4 (@jayhesselberth)
+
 * pkgdown now recognizes GitLab URLs to the source repository and adds the corresponding icon
   to the navbar (#1493). 
   
