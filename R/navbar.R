@@ -21,7 +21,8 @@ data_navbar <- function(pkg = ".", depth = 0L) {
   right <- navbar$right %||% components[right_comp]
 
   list(
-    type = navbar$type %||% "default",
+    type = navbar$type %||% "light",
+    bg = navbar$bg %||% "light",
     left = render_navbar_links(left, depth = depth),
     right = render_navbar_links(right, depth = depth)
   )
