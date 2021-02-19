@@ -1,6 +1,6 @@
 #' Render page with template
 #'
-#' Each page is composed of four templates: "head", "header", "content", and
+#' Each page is composed of four templates: "head", "content", and
 #' "footer". Each of these templates is rendered using the `data`, and
 #' then assembled into an overall page using the "layout" template.
 #'
@@ -45,7 +45,7 @@ render_page <- function(pkg = ".", name, data, path = "", depth = NULL, quiet = 
 
   # render template components
   pieces <- c(
-    "head", "navbar", "header", "content", "docsearch", "footer",
+    "head", "navbar", "content", "docsearch", "footer",
     "in-header", "after-head", "before-body", "after-body"
   )
 
