@@ -322,10 +322,7 @@ data_deps <- function(pkg, depth) {
   )
   deps <- bslib::bs_theme_dependencies(bs_theme)
   # Add other dependencies - TODO: more of those?
-  deps <- c(
-    deps,
-    list(rmarkdown::html_dependency_font_awesome())
-  )
+  # Even font awesome had a too old version in R Markdown (no ORCID)
 
   # Dependencies files end up at the website root in a deps folder
   deps <- lapply(

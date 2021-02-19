@@ -194,10 +194,22 @@ nav[data-toggle="toc"] .nav .nav > li > a {
   font-size: 15px;
 }
 
+.nav {
+flex-direction: column;
+}
+
 /* don't display links in code chunks when printing */
 /* source: https://stackoverflow.com/a/10781533 */
 @media print {
   code a:link:after, code a:visited:after {
     content: "";
   }
+}
+
+.orcid {
+    font-size: 16px;
+    color: #A6CE39;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
 }
