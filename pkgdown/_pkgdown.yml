@@ -11,7 +11,7 @@ authors:
     href: https://hesselberthlab.org
 
 template:
-  bootstrap: 4
+  bootstrap: 3
   # bootswatch: cosmo
   # bslib:
   #   bg: "#202123"

@@ -134,7 +134,7 @@ test_that("page header modification succeeds", {
       <img src="someimage" alt="" /> some text
     </h1>')
 
-  tweak_homepage_html(html)
+  tweak_homepage_html(html, bs_version = 3)
   expect_snapshot_output(show_xml(html))
 })
 
@@ -144,7 +144,7 @@ test_that("links to vignettes & figures tweaked", {
     <img src="man/figures/x.png" />
   </body>')
 
-  tweak_homepage_html(html)
+  tweak_homepage_html(html, bs_version = 3)
   expect_snapshot_output(show_xml(html))
 })
 
